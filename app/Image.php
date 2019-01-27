@@ -17,7 +17,7 @@ class Image extends Model
     // Relacion uno a muchos
     public function likes()
     {
-      return $this->hasMany("App\Likes");
+      return $this->hasMany("App\Like");
     }
 
     // Relacion muchos a uno
