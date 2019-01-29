@@ -1,0 +1,35 @@
+1. Entrar al fichero \apache\apache2.4.9\conf\httpd.conf y descomentar la linea
+
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+
+2. Entrar al fichero \apache\apache2.4.9\conf\extra\httpd-vhosts.conf y añadir los virtualhosts
+
+<VirtualHost *:80>
+  DocumentRoot "C:/xampp/htdocs/"
+  ServerName localhost
+</VirtualHost>
+
+<VirtualHost *:80>
+  DocumentRoot "C:/xampp/htdocs/software/php/master-php/aprendiendo-laravel/public"
+  ServerName aprendiendo-laravel.com.devel
+  ServerAlias www.aprendiendo-laravel.com.devel
+  <Directory "C:/xampp/htdocs/software/php/master-php/aprendiendo-laravel/public">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Order Deny,Allow
+    Allow from all
+  </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+  DocumentRoot "C:/xampp/htdocs/software/php/master-php/proyecto-laravel/public"
+  ServerName proyecto-laravel.com.devel
+  ServerAlias www.proyecto-laravel.com.devel
+  <Directory "C:/xampp/htdocs/software/php/master-php/proyecto-laravel/public">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Order Deny,Allow
+    Allow from all
+  </Directory>
+</VirtualHost>
