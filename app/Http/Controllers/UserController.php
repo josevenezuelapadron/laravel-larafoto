@@ -13,13 +13,33 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-      $id = \Auth::user()->id;
+      // Conseguir usuario identificado
+      $user = \Auth::user();
+      $id = $user->id;
+
+      // Validacion del formulario
+      $validate = $this->validate($request, [
+        'name' => 'required|string|max:255',
+        'surname' => 'required|string|max:255',
+        'nick' => 'required|string|max:255|unique:users,nick,'.$id,
+        'email' => 'required|string|email|max:255|unique:users,email,'.$id
+      ]);
+
+      // Recoger datos del formulario
+      $email = $request->input('email');
       $name = $request->input('name');
       $surname = $request->input('surname');
-      $email = $request->input('email');
-      $password = $request->input('password');
+      $nick = $request->input('nick');
 
-      var_dump($id);
-      var_dump($name);
+      // Asignar nuevos valores al objeto del usuario
+      $user->email = $email;
+      $user->name = $name;
+      $user->surname = $surname;
+      $user->nick = $nick;
+
+      // Ejecutar consulta y cambios en la BD
+      $user->update();
+
+      return redirect()->route("config")->with(['message' => 'Usuario actualizado correctamente']);
     }
 }
