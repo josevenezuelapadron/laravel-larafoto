@@ -3,3 +3,16 @@ form .avatar {
   height: 70px;
   margin-bottom: 15px;
 }
+
+.navbar .container-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 900px;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
+.navbar .container-avatar img {
+  width: 100%;
+  height: 100%;
+}
