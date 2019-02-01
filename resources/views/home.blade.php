@@ -39,6 +39,10 @@
                   </div>
               </div>
             @endforeach
+            <!-- Paginación -->
+            <div class="clearfix"></div>
+            
+            {{ $images->links() }}
         </div>
     </div>
 </div>
