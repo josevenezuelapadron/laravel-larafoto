@@ -28,6 +28,7 @@
                     
                     <div class="description">
                       <span class="nickname">{{ "@".$image->user->nick }}</span>
+                      <span class="nickname date">| {{ \FormatTime::LongTimeFilter($image->created_at) }}</span>
                       <p>{{ $image->description }}</p>
                     </div>
 
@@ -55,6 +56,16 @@
                         <input type="submit" value="Comentar" class="btn btn-success">
 
                       </form>
+
+                      <hr>
+
+                      @foreach($image->comments as $comment)
+                        <div class="comment">
+                          <span class="nickname">{{ "@".$comment->user->nick }}</span>
+                          <span class="nickname date">| {{ \FormatTime::LongTimeFilter($comment->created_at) }}</span>
+                          <p>{{ $comment->content }}</p>
+                        </div>
+                      @endforeach
                     </div>
                   </div>
               </div>
