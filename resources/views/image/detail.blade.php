@@ -38,7 +38,7 @@
                     <div class="clearfix"></div>
 
                     <div class="comments">
-                      <h2 class="btn btn-warning btn-sm btn-comments">Comentarios ( {{ count($image->comments) }} )</h2>
+                      <h2>Comentarios ( {{ count($image->comments) }} )</h2>
                       <hr>
 
                       <form action="{{ route('comment.save') }}" method="POST">
@@ -46,9 +46,9 @@
 
                         <input type="hidden" name="image_id" value="{{ $image->id }}">
                         <p>
-                          <textarea name="content" required class="form-control"></textarea>
+                          <textarea name="content" required class="form-control {{ $errors->has('content') ? 'is-invalid': '' }}"></textarea>
                           @if($errors->has('content'))
-                            <span role="alert"><b>{{ $errors->first('description') }}</b></span>
+                            <span class="invalid-feedback" role="alert"><b>{{ $errors->first('description') }}</b></span>
                           @endif
                         </p>
 
