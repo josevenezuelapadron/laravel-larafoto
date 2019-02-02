@@ -59,6 +59,10 @@
             </li>
 
             <li class="nav-item">
+              <a href="{{ route('user.index') }}" class="nav-link">Usuarios</a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('image.create') }} " class="nav-link">Subir imagen</a>
             </li>
 

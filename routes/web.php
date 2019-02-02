@@ -31,3 +31,4 @@ Route::get("/like/{image_id}", "LikeController@like")->name("like.save");
 Route::get("/dislike/{image_id}", "LikeController@dislike")->name("like.delete");
 Route::get("/likes", "LikeController@index")->name("likes");
 Route::get("/image/delete/{id}", "ImageController@delete")->name("image.delete");
+Route::get("/users", "UserController@index")->name("user.index");
