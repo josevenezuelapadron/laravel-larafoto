@@ -31,6 +31,20 @@ class CommentController extends Controller
     $comment->save();
 
     return redirect()->route('image.detail', ['id' => $image_id])->with(['message' => 'Comentario publicado correctamente']);
-    
+  }
+
+  public function delete($id)
+  {
+    $user = \Auth::user();
+
+    $comment = Comment::find($id);
+
+    if ($user && ($comment->user->id == $user->id || $comment->image->user_id == $user->id)) {
+      $comment->delete();
+      
+      return redirect()->route('image.detail', ['id' => $comment->image->id])->with(['message' => 'Comentario eliminado correctamente']);
+    } else {
+      return redirect()->route('image.detail', ['id' => $comment->image->id])->with(['message' => 'El comentario no se ha eliminado']);
+    }
   }
 }
